@@ -71,7 +71,7 @@ INIT_LI    =0
 ########################################################
 # Make rules
 ########################################################
-ALL_LIBS   = $(ARDIR)/libasterisc.a $(ARDIR)/libdebug.a $(ARDIR)/libgpio.a $(ARDIR)/libuart.a $(ARDIR)/lib7seg.a $(ARDIR)/libspi_slave.a
+ALL_LIBS   = $(ARDIR)/libasterisc.a $(ARDIR)/libdebug.a $(ARDIR)/libgpio.a $(ARDIR)/libuart.a $(ARDIR)/libuart_extensions.a $(ARDIR)/lib7seg.a $(ARDIR)/libspi_slave.a
 
 .PHONY: all
 all: $(ALL_LIBS)
@@ -88,6 +88,9 @@ $(ARDIR)/libgpio.a: $(SRCDIR)/gpio.c $(INCDIR)/gpio.h
 
 $(ARDIR)/libuart.a: $(SRCDIR)/uart.c $(INCDIR)/uart.h
 	$(call compile_lib,uart,$(OBJDIR)/asterisc.o)
+
+$(ARDIR)/libuart_extensions.a: $(SRCDIR)/uart_extensions.c $(INCDIR)/uart_extensions.h
+	$(call compile_lib,uart_extensions,$(OBJDIR)/asterisc.o $(OBJDIR)/uart.o)
  
 $(ARDIR)/lib7seg.a: $(SRCDIR)/7seg.c $(INCDIR)/7seg.h
 	$(call compile_lib,7seg,$(OBJDIR)/asterisc.o $(OBJDIR)/gpio.o)

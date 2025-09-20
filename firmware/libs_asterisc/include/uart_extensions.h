@@ -21,37 +21,32 @@
 */
 
 
-#ifndef _UART_LIB_H_
-#define _UART_LIB_H_ 
+#ifndef _UART_EXTENSIONS_LIB_H_
+#define _UART_EXTENSIONS_LIB_H_ 
 
 #include "asterisc.h" 
+#include "uart.h" 
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
-#define GET_BAUDRATE_DIV(GBD_BAUDRATE, GBD_FREQUENCY) ((GBD_FREQUENCY) / (1 + (GBD_BAUDRATE)))
+void uart0_printf_c(char  c);
 
-// Usual Baudrates (All supported at 100 MHz):
-#define BAUD_2400    2400  
-#define BAUD_4800    4800  
-#define BAUD_9600    9600  
-#define BAUD_19200   19200 
-#define BAUD_38400   38400 
-#define BAUD_57600   57600 
-#define BAUD_115200  115200
-#define BAUD_230400  230400
-#define BAUD_460800  460800
-#define BAUD_570600  570600
-#define BAUD_921600  921600
-#define BAUD_1000000 1000000
-#define BAUD_2000000 2000000
+void uart0_printf_s(char *p);
 
-void _putchar(char c);
+void uart0_printf_x(unsigned long val, unsigned char char_count);
 
-int uart0_putchar(int c);
+void uart0_printf_d(int val);
 
-char uart0_getchar();
+void uart0_printf(const char *format, ...);
 
-int uart0_puts(const char *s);
+void itoa_light(unsigned long val, char *dest);
 
-#endif // _UART_LIB_H_
+int my_strcmp(const char *a, const char *b);
+
+unsigned char is_delim(char c, char *delim);
+
+char* my_strtok(char *s, char *delim);
+
+
+#endif // _UART_EXTENSIONS_LIB_H_
