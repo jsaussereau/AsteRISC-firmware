@@ -20,36 +20,36 @@
 #
 
 .PHONY : all
-all: libs_asterisc pwm_example uart_example cli_example
+all: pwm_example uart_example cli_example
 
 .PHONY: libs_asterisc
-libs_asterisc:
+libs_asterisc: 
 	@+$(MAKE) -C ../$@ --no-print-directory
 
 .PHONY: cpu_example
-cpu_example:
+cpu_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
 
 .PHONY: mega_example
-mega_example:
+mega_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
 
 .PHONY: pwm_example
-pwm_example:
+pwm_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
 
 .PHONY: uart_example
-uart_example:
+uart_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
 
 .PHONY: timer_example
-timer_example:
+timer_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
 
 .PHONY: cli_example
-cli_example:
+cli_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
 
 .PHONY: mul_example
-mul_example:
+mul_example: libs_asterisc
 	@+$(MAKE) -C $@ --no-print-directory
