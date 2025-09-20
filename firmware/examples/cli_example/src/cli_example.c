@@ -23,6 +23,7 @@
 #include <asterisc.h>
 #include <gpio.h>
 #include <uart.h> 
+#include <uart_extensions.h> 
 
 #include "cli.h"
 

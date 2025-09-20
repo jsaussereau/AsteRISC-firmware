@@ -21,7 +21,7 @@
 
 TARGET = cli_example
 MARCH  = -march=rv32i -mabi=ilp32
-LIBS   = -lasterisc -lgpio -luart
+LIBS   = -lasterisc -lgpio -luart -luart_extensions -lgcc
 MAKEFILE = ../../generic_makefile.mk
 
 all :

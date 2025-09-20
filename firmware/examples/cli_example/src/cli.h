@@ -28,6 +28,7 @@
 #include "commands.h" 
 #include <string.h>
 #include <uart.h>
+#include <uart_extensions.h>
 
 void cli_execute();
 

@@ -26,6 +26,8 @@
 #include <string.h>
 #include "implem.h" 
 #include "config.h" 
+#include <uart.h>
+#include <uart_extensions.h>
 
 #define COMMAND_COUNT 5
 

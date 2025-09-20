@@ -23,7 +23,7 @@
 #include <asterisc.h>
 #include <gpio.h>
 #include <uart.h> 
-//#include <printf.h>
+#include <uart_extensions.h>
 
 #define UART_TX_GPIO 19
 #define UART_RX_GPIO 18
