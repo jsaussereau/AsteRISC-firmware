@@ -23,7 +23,6 @@
 #include "../include/spi_slave.h"
 
 uint8_t spi_get_byte() {
-  //while(spi_status_rx_bits->fifo_empty); //wait for a byte
   while(*spi_status_rx_fifo_empty); //wait for a byte
   return *spi_data_rx;
 }

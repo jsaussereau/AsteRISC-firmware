@@ -178,10 +178,3 @@ char* my_strtok(char *s, char *delim) {
     s++;
   }
 }
-
-
-/*
-unsigned short get_baudrate_div(unsigned short baudrate, unsigned long frequency) {
-  return frequency/(1+baudrate);
-}
-*/

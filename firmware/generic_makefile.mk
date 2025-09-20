@@ -70,7 +70,7 @@ SOURCES   := $(wildcard $(SRCDIR)/*.c)
 OBJECTS   := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 ifeq "$(RV32E)" "0"
-START      = $(OBJDIR)/start.o
+START      = $(OBJDIR)/start_rv32i.o
 ARDIR      = $(LIBDIR)/rv32i/ar
 else
 START      = $(OBJDIR)/start_rv32e.o
@@ -110,8 +110,8 @@ $(BINDIR)/$(TARGET): $(OBJECTS) $(START)
 	@$(TOOLSDIR)/gen_mem.sh $(BINDIR)/$(TARGET)
 	@$(PYTHON3) $(TOOLSDIR)/hex2coe.py $(TARGET)
 
-$(OBJDIR)/start.o: $(STARTDIR)/start.S
-	@$(AS) -o $(OBJDIR)/start.o $(AFLAGS) $(STARTDIR)/start.S
+$(OBJDIR)/start_rv32i.o: $(STARTDIR)/start_rv32i.S
+	@$(AS) -o $(OBJDIR)/start_rv32i.o $(AFLAGS) $(STARTDIR)/start_rv32i.S
 
 $(OBJDIR)/start_rv32e.o: $(STARTDIR)/start_rv32e.S
 	@$(AS) -o $(OBJDIR)/start_rv32e.o $(AFLAGS) $(STARTDIR)/start_rv32e.S
