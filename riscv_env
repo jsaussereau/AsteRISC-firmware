@@ -1,0 +1,9 @@
+
+# Edit this file to set your RISCV toolchain path
+
+RISCV_DIR=/opt/riscv
+RISCV_BIN=${RISCV_DIR}/bin
+RISCV_TC=riscv32
+#RISCV_TC=riscv64
+
+PYTHON3=python3
