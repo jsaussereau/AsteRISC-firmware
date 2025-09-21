@@ -24,7 +24,7 @@ all: my_asterisc_program
 
 .PHONY: libs_asterisc
 libs_asterisc:
-	@+$(MAKE) -C ../$@ --no-print-directory
+	@+$(MAKE) -C .. $@ --no-print-directory
 
 .PHONY: my_asterisc_program
 my_asterisc_program: libs_asterisc

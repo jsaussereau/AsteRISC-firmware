@@ -19,41 +19,10 @@
 # along with AsteRISC. If not, see <https://www.gnu.org/licenses/>.
 #
 
-_GREEN     =\x1b[32m
-_END       =\x1b[0m
+TARGET = ${TARGET_NAME}
+MARCH  = -march=rv32i -mabi=ilp32
+LIBS   = -lasterisc -ldebug -lgpio -luart -luart_extensions -lspi_slave -l7seg -lgcc
+MAKEFILE = ../../generic_makefile.mk
 
-USER_PROGRAM_SCRIPT = ../tools/user_program.py
-NAME = "my_program"
-
-.PHONY : all
-all: libs_asterisc examples user_programs complete_msg
-
-.PHONY: libs_asterisc
-libs_asterisc:
-	@+$(MAKE) -C $@ --no-print-directory
-
-.PHONY: examples
-examples:
-	@+$(MAKE) -C $@ --no-print-directory
-
-.PHONY: user_programs
-user_programs:
-	@+$(MAKE) -C $@ --no-print-directory
-
-.PHONY: user
-user: user_programs
-
-.PHONY: new
-new:
-	@python3 $(USER_PROGRAM_SCRIPT) --new $(NAME)
-
-.PHONY: delete
-delete:
-	@python3 $(USER_PROGRAM_SCRIPT) --del $(NAME)
-
-.PHONY: del
-del: delete
-
-.PHONY: complete_msg
-complete_msg:
-	@/bin/echo -e "\n$(_GREEN)build complete!$(_END)"
+all :
+	@+$(MAKE) -f $(MAKEFILE) TARGET=$(TARGET) LIBS="$(LIBS)" MARCH="$(MARCH)" --no-print-directory

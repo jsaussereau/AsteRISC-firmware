@@ -31,7 +31,18 @@ all: motd firmware
 
 .PHONY: firmware
 firmware:
-	@+$(MAKE) -C $@ --no-print-directory
+	@+$(MAKE) -C firmware $@ --no-print-directory
+
+.PHONY: new
+new:
+	@+$(MAKE) -C firmware $@ --no-print-directory
+
+.PHONY: delete
+delete:
+	@+$(MAKE) -C firmware $@ --no-print-directory
+
+.PHONY: del
+del: delete
 
 .PHONY: motd
 motd:
