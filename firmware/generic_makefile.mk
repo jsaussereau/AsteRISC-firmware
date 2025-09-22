@@ -26,7 +26,7 @@ TARGET     = my_example
 LIBS       = -lasterisc
 AFLAGS     = -march=rv32i -mabi=ilp32
 MARCH  	   = -march=rv32i -mabi=ilp32
-CFLAGS     = -Wall -O2 -pedantic $(MARCH) #-fno-exceptions -fno-asynchronous-unwind-tables -fno-ident
+CFLAGS     = -Wall -O2 -pedantic $(MARCH) -MMD -MP #-fno-exceptions -fno-asynchronous-unwind-tables -fno-ident
 RV32E      = 0
 
 IMEM_ADDR_BASE = 0xF0000000
@@ -68,6 +68,7 @@ STARTDIR   = $(COMMONDIR)
 
 SOURCES   := $(wildcard $(SRCDIR)/*.c)
 OBJECTS   := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+DEPS      := $(OBJECTS:.o=.d)
 
 ifeq "$(RV32E)" "0"
 START      = $(OBJDIR)/start_rv32i.o
@@ -119,6 +120,8 @@ $(OBJDIR)/start_rv32e.o: $(STARTDIR)/start_rv32e.S
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c $(ARDIR)/*.a
 	$(call message)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INCDIR) -I$(LIBC_INC) -I$(RISCV_DIR)/lib/gcc/riscv32-unknown-elf/$(GCCVERSION)/include
+
+-include $(DEPS)
 
 define message
 	@if [ $(INIT_MSG) = 0 ]; then\
