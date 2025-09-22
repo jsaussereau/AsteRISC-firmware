@@ -31,10 +31,10 @@ CFLAGS     = -Wall -O3 -pedantic $(MARCH) -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINT
 
 # Edit riscv_env to set your RISCV toolchain path
 include ../../riscv_env
-export RISCV_DIR RISCV_BIN RISCV_TC
+export RISCV_DIR RISCV_BIN RISCV_TT RISCV_LIB RISCV_INC RISCV_GCC_LIB
 
-CC         = $(RISCV_BIN)/$(RISCV_TC)-unknown-elf-gcc
-AR         = $(RISCV_BIN)/$(RISCV_TC)-unknown-elf-ar
+CC         = $(RISCV_BIN)/$(RISCV_TT)-gcc
+AR         = $(RISCV_BIN)/$(RISCV_TT)-ar
 
 ########################################################
 # Folders

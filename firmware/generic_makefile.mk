@@ -38,16 +38,16 @@ DMEM_ADDR_BASE = 0x10000000
 
 # Edit riscv_env to set your RISCV toolchain path
 include ../../../riscv_env
-export RISCV_DIR RISCV_BIN RISCV_TC
+export RISCV_DIR RISCV_BIN RISCV_TT RISCV_LIB RISCV_INC RISCV_GCC_LIB
 
-CC         = $(RISCV_BIN)/$(RISCV_TC)-unknown-elf-gcc
-AS         = $(RISCV_BIN)/$(RISCV_TC)-unknown-elf-as
-LD         = $(RISCV_BIN)/$(RISCV_TC)-unknown-elf-ld
+CC         = $(RISCV_BIN)/$(RISCV_TT)-gcc
+AS         = $(RISCV_BIN)/$(RISCV_TT)-as
+LD         = $(RISCV_BIN)/$(RISCV_TT)-ld
 
 GCCVERSION = $(shell $(CC) --version | grep gcc | sed 's/^.* //g')
-LIB_GCC    =$(RISCV_DIR)/lib/gcc/$(RISCV_TC)-unknown-elf/$(GCCVERSION)/rv32i/ilp32/
-LIBC_NANO  =$(RISCV_DIR)/$(RISCV_TC)-unknown-elf/lib/libc_nano.a
-LIBC_INC   =$(RISCV_DIR)/$(RISCV_TC)-unknown-elf/include/
+LIB_GCC    = $(RISCV_DIR)/lib/gcc/$(RISCV_TT)/$(GCCVERSION)/$(RISCV_GCC_LIB)
+LIBC_NANO  = $(RISCV_LIB)/libc_nano.a
+LIBC_INC   = $(RISCV_INC)
 
 ########################################################
 # Folders

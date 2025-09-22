@@ -22,9 +22,9 @@
 # Edit riscv_env to set your RISCV toolchain path
 source "$(dirname "$0")/../riscv_env"
 
-OBJCOPY=$RISCV_BIN/$RISCV_TC-unknown-elf-objcopy
-OBJDUMP=$RISCV_BIN/$RISCV_TC-unknown-elf-objdump
-OBJSIZE=$RISCV_BIN/$RISCV_TC-unknown-elf-size
+OBJCOPY=$RISCV_BIN/$RISCV_TT-objcopy
+OBJDUMP=$RISCV_BIN/$RISCV_TT-objdump
+OBJSIZE=$RISCV_BIN/$RISCV_TT-size
 
 
 if [ ! -f "$1" ]
