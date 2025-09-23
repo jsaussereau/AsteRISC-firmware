@@ -108,7 +108,7 @@ all: dirmake $(BINDIR)/$(TARGET)
 
 $(BINDIR)/$(TARGET): $(OBJECTS) $(START)
 	@$(LD) -Ttext $(IMEM_ADDR_BASE) -Tdata $(DMEM_ADDR_BASE) -T $(COMMONDIR)/riscv.ld $(START) $(OBJECTS) -o $(BINDIR)/$(TARGET) $(LIBC_NANO) $(LDFLAGS) $(LIBS)
-	@$(TOOLSDIR)/gen_mem.sh $(BINDIR)/$(TARGET)
+	@/bin/bash -c '$(TOOLSDIR)/gen_mem.sh $(BINDIR)/$(TARGET)'
 	@$(PYTHON3) $(TOOLSDIR)/hex2coe.py $(TARGET)
 
 $(OBJDIR)/start_rv32i.o: $(STARTDIR)/start_rv32i.S

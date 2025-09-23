@@ -33,7 +33,7 @@ then
    exit
 fi
 
-if ! command -v $PYTHON3 &> /dev/null
+if [ ! command -v python3 &> /dev/null ]
 then
     echo "Error: Python3 is required"
     exit
@@ -67,8 +67,6 @@ $OBJDUMP -d $1 | sed '/[^\t]*\t[^\t]*\t/!d' | cut -f 3,4 | sed 's/ .*$//' > $1.a
 # - strip multiple spaces to one
 # - remove all ':'
 $OBJDUMP -dS $1 | sed '/^$/d' | sed '1,2d' | sed 's/\t/ /g' | tr -s ' ' | tr -d ':' > $1.txt
-
-#$PYTHON3 hex2sv.py
 
 power2() { python3 -c "print(1 if $1 == 0 else 2 ** ( $1 - 1 ).bit_length(), end='')"; }
 
